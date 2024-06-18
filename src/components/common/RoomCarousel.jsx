@@ -44,8 +44,8 @@ const RoomCarousel = () => {
                 {rooms.slice(index * 4, index * 4 + 4).map((room) => (
                   <Col key={room.id} className="mb-4" xs={12} md={6} lg={3}>
                     <Card>
-                      <Link to={`/book-room/${room.id}`}>
-                        <Card.Img
+                    <Link to={`/book-room/${room.id}`} >                        
+                    <Card.Img
                           variant="top"
                           src={`data:image/png;base64, ${room.photo}`}
                           alt="Room Photo"
