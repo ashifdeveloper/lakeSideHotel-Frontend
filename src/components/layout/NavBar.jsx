@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react"
 import { NavLink, Link } from "react-router-dom"
+import Logout from "../auth/Logout"
 
 
 const NavBar = () => {
@@ -38,11 +39,13 @@ const NavBar = () => {
 							</NavLink>
 						</li>
 
+						{isLoggedIn && userRole === "ROLE_ADMIN" && (
 							<li className="nav-item">
 								<NavLink className="nav-link" aria-current="page" to={"/admin"}>
 									Admin
 								</NavLink>
 							</li>
+						)}
 					</ul>
 
 					<ul className="d-flex navbar-nav">
@@ -67,26 +70,15 @@ const NavBar = () => {
 							<ul
 								className={`dropdown-menu ${showAccount ? "show" : ""}`}
 								aria-labelledby="navbarDropdown">
-							
+								{isLoggedIn ? (
+									<Logout />
+								) : (
 									<li>
 										<Link className="dropdown-item" to={"/login"}>
 											Login
 										</Link>
 									</li>
-									<li>
-										<Link className="dropdown-item" to={"/profile"}>
-											Profile
-										</Link>
-									</li>
-                  <li>
-                    <hr className='dropdown-divider' />
-                  </li>
-									<li>
-										<Link className="dropdown-item" to={"/logout"}>
-											Logout
-										</Link>
-									</li>
-						
+								)}
 							</ul>
 						</li>
 					</ul>
